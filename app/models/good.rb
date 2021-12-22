@@ -1,4 +1,4 @@
 class Good < ApplicationRecord
-  has_one :user
-
+  validates  :name, :description, :image_url, :title, presence: true
+  belongs_to :user
 end

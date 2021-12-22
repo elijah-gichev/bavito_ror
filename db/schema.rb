@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_19_184829) do
+ActiveRecord::Schema.define(version: 2021_12_22_113608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 2021_12_19_184829) do
     t.index ["user_id"], name: "index_goods_on_user_id"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.bigint "creator_id"
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.bigint "sender_good_id", null: false
+    t.bigint "recipient_good_id", null: false
+    t.string "comment", null: false
+    t.string "status", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_requests_on_creator_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest"
@@ -38,5 +51,8 @@ ActiveRecord::Schema.define(version: 2021_12_19_184829) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "goods", "users"
+  add_foreign_key "requests", "goods", column: "recipient_good_id"
+  add_foreign_key "requests", "goods", column: "sender_good_id"
+  add_foreign_key "requests", "users", column: "recipient_id"
+  add_foreign_key "requests", "users", column: "sender_id"
 end

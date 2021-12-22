@@ -1,5 +1,4 @@
 class Request < ApplicationRecord
-  has_many :goods
-  has_many :users
-
+  belongs_to :user
+  validates :comment, :status, presence: true
 end
