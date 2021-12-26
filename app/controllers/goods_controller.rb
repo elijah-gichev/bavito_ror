@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  #before_action :authentication
+  before_action :authentication
 
   def index
     goods = Good.all
@@ -22,7 +22,6 @@ class GoodsController < ApplicationController
       render json: {error: good.errors.full_messages},  status: :bad_request
     end
 
-    puts good
   end
 
   def show
