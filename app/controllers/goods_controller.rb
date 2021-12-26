@@ -8,7 +8,7 @@ class GoodsController < ApplicationController
 
   def create
     good = Good.new(
-      user_id: good_params[:user_id],
+      user: User.find_by(id: good_params[:user_id]),
       title: good_params[:title],
       description: good_params[:description],
       image_url: good_params[:image_url],

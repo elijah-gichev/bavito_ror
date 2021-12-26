@@ -17,11 +17,10 @@ ActiveRecord::Schema.define(version: 2021_12_22_113608) do
 
   create_table "goods", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name", null: false
     t.text "description", null: false
     t.string "image_url", null: false
     t.string "title", null: false
-    t.integer "points"
+    t.integer "points", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_goods_on_user_id"
