@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
 
+  #login
   post '/auth', to: 'auth#create'
-  delete '/auth', to: 'auth#destroy'
-
   #registration
   post '/users', to: 'users#create'
 
-  #dashbord/goods/main
+  # goods stuff
+  post '/goods', to: 'goods#create'
   get '/goods', to: 'goods#index'
 
-  #goods
-  #get '/goods/create', to: 'goods#create'
-  post '/goods', to: 'goods#create'
 
   get '/goods/:id/edit', to: 'goods#edit'
   put '/goods/:id', to: 'goods#update'

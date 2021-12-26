@@ -1,15 +1,28 @@
 class GoodsController < ApplicationController
+  #before_action :authentication
+
   def index
     goods = Good.all
-    render json: goods, status: 200
+    render json: goods, status: :accepted
   end
 
   def create
     good = Good.new(
-      name: good_params[:name],
+      user_id: good_params[:user_id],
+      title: good_params[:title],
       description: good_params[:description],
-      image_url: good_params[:image_url]
+      image_url: good_params[:image_url],
+      points: good_params[:points]
       )
+
+    if good.valid?
+      good.save
+      render json: {good: good}, status: :created
+    else
+      render json: {error: good.errors.full_messages},  status: :bad_request
+    end
+
+    puts good
   end
 
   def show
@@ -24,9 +37,11 @@ class GoodsController < ApplicationController
   private
   def good_params
     params.require(:good).permit([
-      :name,
+      :user_id,
+      :title,
       :description,
-      :image_url])
+      :image_url,
+      :points])
   end
 
 end
