@@ -8,19 +8,22 @@ Rails.application.routes.draw do
   # goods stuff
   post '/goods', to: 'goods#create'
   get '/goods', to: 'goods#index'
-
-
-  get '/goods/:id/edit', to: 'goods#edit'
-  put '/goods/:id', to: 'goods#update'
-
   get '/goods/:id', to: 'goods#show'
-  delete '/goods/:id', to: 'goods#destroy' #можно ставить статус удалён, но не удалять
+
+
+
+  #put '/goods/:id', to: 'goods#update'
+
+
+  #можно ставить статус удалён, но не удалять
+  #   delete '/goods/:id', to: 'goods#destroy'
 
 
   #requests
+  post '/requests', to: 'requests#create'
+
   get '/requests', to: 'requests#index'
 
-  post '/requests/create', to: 'requests#create'
   delete '/requests/:id', to: 'requests#destroy'
   #нужно ещё как-то принимать запрос
 

@@ -21,20 +21,20 @@ class GoodsController < ApplicationController
     else
       render json: {error: good.errors.full_messages},  status: :bad_request
     end
-
   end
 
   def show
-    good = Good.find_by[id: params[:id]]
+    good = Good.find_by(id: params[:id])
+
     if good
-      render json: good, status: 200
+      render json: good, status: :ok
     else
-      render json: {error: "Product not found."}
+      render json: {error: "Product not found."}, status: :not_found
     end
   end
 
   private
-  def good_params
+  def request_params
     params.require(:good).permit([
       :user_id,
       :title,
