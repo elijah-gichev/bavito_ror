@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
-
-  #auth
-  get '/auth', to: 'auth#index'
-  #post '/auth/registration', to: 'auth#create'
-  #post '/auth/login', to: 'auth#create'
   post '/auth', to: 'auth#create'
   delete '/auth', to: 'auth#destroy'
 
