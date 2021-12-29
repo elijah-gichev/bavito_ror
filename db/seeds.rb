@@ -41,3 +41,14 @@ Product.create([
                 image_url: "https://sun9-22.userapi.com/impg/i6njkurE1fXyF4XRNapOrs4Hn3Dj0B_jliTEOg/QsaTROK0FZk.jpg?size=604x604&quality=96&sign=9475116d71af61c2f78c4fc191e5441e&type=album",
                 points: 1}
             ])
+Request.create([{
+                  creator_id: 1,
+                  sender_id: 1,
+                  recipient_id: 2,
+                  sender_good_id: 1,
+                  recipient_good_id: 2,
+                  comment: "Very good trade!",
+                  status: "DEFAULT"
+                }
+  ]
+)

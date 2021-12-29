@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(
-      user: User.find_by(id: request_params[:user_id]),
+      user_id: User.find_by(id: request_params[:user_id]),
       title: request_params[:title],
       description: request_params[:description],
       image_url: request_params[:image_url],
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
     if product.valid?
       product.save
-      render json: {product: product}, status: :created
+      render json: {product: product}, status: :ok
     else
       render json: {error: product.errors.full_messages},  status: :bad_request
     end

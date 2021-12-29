@@ -14,13 +14,12 @@ Rails.application.routes.draw do
 
 
   #requests
-  post '/users/:userId/requests', to: 'requests#create'
-  get '/users/:userId/requests', to: 'requests#index'
-  get 'users/:userId/requests/:requestId', to: 'requests#index'
+  post '/users/:user_id/requests', to: 'requests#create'
+  get '/users/:user_id/requests', to: 'requests#index'
+  get '/users/:user_id/requests/:request_id', to: 'requests#show'
 
-  put 'users/:userId/requests/:requestId', to: 'requests#change'
-
-
+  put '/users/:user_id/requests/accept/:request_id', to: 'requests#accept'
+  put '/users/:user_id/requests/decline/:request_id', to: 'requests#decline'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
