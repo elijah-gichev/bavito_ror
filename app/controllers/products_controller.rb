@@ -3,7 +3,15 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all
-    render json: products, status: :ok
+    render json: {products: products}, status: :ok
+  end
+
+  def user_goods
+    #products = Product.find_by(id: params[:user_id])
+    #
+    products = Product.all.where(user_id:  params[:user_id])
+
+    render json: {products: products}, status: :ok
   end
 
   def create

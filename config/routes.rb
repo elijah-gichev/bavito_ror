@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
 
   # goods stuff
-  post '/goods', to: 'goods#create'
-  get '/goods', to: 'goods#index'
-  get '/goods/:id', to: 'goods#show'
+  post '/goods', to: 'products#create'
+  get '/goods', to: 'products#index'
+  get '/users/:user_id/goods', to: 'products#user_goods'
+  get '/goods/:id', to: 'products#show'
 
 
 
