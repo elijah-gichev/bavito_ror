@@ -12,20 +12,12 @@ Rails.application.routes.draw do
 
 
 
-  #put '/goods/:id', to: 'goods#update'
-
-
-  #можно ставить статус удалён, но не удалять
-  #   delete '/goods/:id', to: 'goods#destroy'
-
-
   #requests
-  post '/requests', to: 'requests#create'
+  post '/users/:userId/requests', to: 'requests#create'
+  get '/users/:userId/requests', to: 'requests#index'
+  get 'users/:userId/requests/:requestId', to: 'requests#index'
 
-  get '/requests', to: 'requests#index'
-
-  delete '/requests/:id', to: 'requests#destroy'
-  #нужно ещё как-то принимать запрос
+  put 'users/:userId/requests/:requestId', to: 'requests#change'
 
 
 

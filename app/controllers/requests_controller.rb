@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
    def index
      requests = Request.all
-     render json: requests, status: :accepted
+     render json: requests, status: :ok
    end
 
    def close
@@ -10,6 +10,7 @@ class RequestsController < ApplicationController
    end
 
   def create
+
     request = Request.new(
       creator_id: req_params[:creator_id],
       sender_id: req_params[:sender_id],

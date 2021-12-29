@@ -1,6 +1,6 @@
 class StatusValidator < ActiveModel::Validator
-  def StatusValidate(record)
-    if record.status != "DELETED" or record.status != "EXCHANGED" or record.status != "DEFAULT"
+  def validate(record)
+    if record.status != "DELETED" and record.status != "EXCHANGED" and record.status != "DEFAULT"
       record.errors.add :base, "Incorrect status"
     end
   end

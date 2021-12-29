@@ -3,16 +3,16 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all
-    render json: products, status: :accepted
+    render json: products, status: :ok
   end
 
   def create
     product = Product.new(
-      user: User.find_by(id: product_params[:user_id]),
-      title: product_params[:title],
-      description: product_params[:description],
-      image_url: product_params[:image_url],
-      points: product_params[:points]
+      user: User.find_by(id: request_params[:user_id]),
+      title: request_params[:title],
+      description: request_params[:description],
+      image_url: request_params[:image_url],
+      points: request_params[:points]
       )
 
     if product.valid?
