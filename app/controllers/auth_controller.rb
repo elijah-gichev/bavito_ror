@@ -11,7 +11,8 @@ class AuthController < ApplicationController
     elsif @user == nil
       render json: {error: ["invalid credentials"]}, status: :not_found
     elsif @user.password != user_params[:password]
-
+      puts @user.password
+      puts user_params[:password]
       render json: {error: ["password incorrect"]}, status: :not_found
     else
       render json: {error: @user.errors.full_messages}, status: :not_found

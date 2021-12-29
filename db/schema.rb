@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_22_113608) do
+ActiveRecord::Schema.define(version: 2021_12_28_182828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "goods", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.bigint "user_id"
     t.text "description", null: false
     t.string "image_url", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_113608) do
     t.integer "points", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_goods_on_user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2021_12_22_113608) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "requests", "goods", column: "recipient_good_id"
-  add_foreign_key "requests", "goods", column: "sender_good_id"
+  add_foreign_key "requests", "products", column: "recipient_good_id"
+  add_foreign_key "requests", "products", column: "sender_good_id"
   add_foreign_key "requests", "users", column: "recipient_id"
   add_foreign_key "requests", "users", column: "sender_id"
 end

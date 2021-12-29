@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :email,  :phone, presence: true, uniqueness: true
   validates_presence_of :name
-  has_many :good
+  has_many :products
   has_many :request
 
   validates_format_of :phone, with: /[0-9]{11}/

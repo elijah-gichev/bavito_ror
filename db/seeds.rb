@@ -19,7 +19,7 @@ User.create([ {
               }
             ])
 
-Good.create([
+Product.create([
               {
                 user_id: 1,
                 title: "Keanu Reeves",
