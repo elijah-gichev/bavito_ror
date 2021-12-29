@@ -12,7 +12,6 @@ class ApplicationController < ActionController::API
     user_id = decode_data[0]["user_data"] unless !decode_data
     # find a user in the database to be sure token is for a real user
     user = User.find_by(id: user_id)
-
     if user
       return true
     else
