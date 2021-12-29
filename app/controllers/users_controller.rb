@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       token = encode_user_data({ user_data: @user.id })
-      render json: {user: @user, token: token}, status: :created
+      render json: {user: @user, token: token}, status: :ok
     else
       render json: {error: @user.errors.full_messages},  status: :bad_request
     end

@@ -7,7 +7,7 @@ class AuthController < ApplicationController
     if @user && @user.password == user_params[:password]
       token = encode_user_data({ user_data: @user.id })
       # return to user
-      render json: { token: token, user: @user }, status: :accepted
+      render json: { token: token, user: @user }, status: :ok
     elsif @user == nil
       render json: {error: ["invalid credentials"]}, status: :not_found
     elsif @user.password != user_params[:password]
