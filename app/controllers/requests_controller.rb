@@ -10,9 +10,8 @@ class RequestsController < ApplicationController
    end
 
   def create
-
     request = Request.new(
-      creator_id: req_params[:creator_id],
+      creator_id: params[:user_id],
       sender_id: req_params[:sender_id],
       recipient_id: req_params[:recipient_id],
       sender_good_id: req_params[:sender_good_id],
@@ -23,7 +22,7 @@ class RequestsController < ApplicationController
 
     if request.valid?
       request.save
-      render json: {request: request}, status: :created
+      render json: {request: request}, status: :ok
     else
       render json: {error: request.errors.full_messages},  status: :bad_request
     end
@@ -44,7 +43,6 @@ class RequestsController < ApplicationController
   private
   def req_params
     params.require(:request).permit([
-                                   :creator_id,
                                    :sender_id,
                                    :recipient_id,
                                    :sender_good_id,

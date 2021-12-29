@@ -6,16 +6,16 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
 
   # goods stuff
-  post '/goods', to: 'goods#create'
-  get '/goods', to: 'goods#index'
-  get '/goods/:id', to: 'goods#show'
+  post '/goods', to: 'products#create'
+  get '/goods', to: 'products#index'
+  get '/goods/:id', to: 'products#show'
 
 
 
   #requests
-  post '/users/:userId/requests', to: 'requests#create'
-  get '/users/:userId/requests', to: 'requests#index'
-  get 'users/:userId/requests/:requestId', to: 'requests#index'
+  post '/users/:user_id/requests', to: 'requests#create'
+  get '/users/:user_id/requests', to: 'requests#index'
+  get 'users/:user_id/requests/:requestId', to: 'requests#index'
 
   put 'users/:userId/requests/:requestId', to: 'requests#change'
 
